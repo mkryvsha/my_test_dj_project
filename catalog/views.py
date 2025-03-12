@@ -35,16 +35,20 @@ class BookListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 2
 
 
-@login_required
-def book_detail_view(request: HttpRequest, pk: int) -> HttpResponse:
-    try:
-        book = Book.objects.get(pk=pk)
-    except Book.DoesNotExist:
-        raise Http404("Book does not exist")
-    context = {
-        "book": book,
-    }
-    return render(request, "catalog/book_detail.html", context=context)
+class BookDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Book
+
+
+# @login_required
+# def book_detail_view(request: HttpRequest, pk: int) -> HttpResponse:
+#     try:
+#         book = Book.objects.get(pk=pk)
+#     except Book.DoesNotExist:
+#         raise Http404("Book does not exist")
+#     context = {
+#         "book": book,
+#     }
+#     return render(request, "catalog/book_detail.html", context=context)
 
 
 class AuthorListView(LoginRequiredMixin, generic.ListView):
