@@ -4,8 +4,8 @@
       <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Prev</a></li>
     {% endif %}
 
-{#    <li class="page-item active"><span class="page-link">{{ page_obj.number }} of {{ paginator.num_pages }}</span></li>#}
-
+{#    <li class="page-item active"><span class="page-link">{{ page_obj.number }} of {{ paginator.num_pages }}</span></li> #}
+{#раскомментировать для "1 of 2"#}
   {% for num in page_obj.paginator.page_range %}
     {% if num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
         <span class="page-link active"><a href="?page={{ num }}" class="{% if num == page_obj.number %}active{% endif %}">{{ num }}</a></span>

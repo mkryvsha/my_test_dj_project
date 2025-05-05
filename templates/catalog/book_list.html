@@ -5,7 +5,12 @@
   {% if book_list %}
     <ul>
       {% for book in book_list %}
-        <li><a href="{{ book.get_absolute_url }}">{{ book.title }} (price: {{ book.price }}$, format: {{ book.format }})</a></li>
+        <li><a href="{{ book.get_absolute_url }}">
+          {{ book.title }} (price: {{ book.price }}$, format: {{ book.format }})
+          {% for author in book.authors.all %}
+            {% if user.id == author.id %}(Your book!!!){% endif %}
+          {% endfor %}
+        </a></li>
       {% endfor %}
     </ul>
   {% endif %}
