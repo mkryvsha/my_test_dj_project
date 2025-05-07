@@ -37,6 +37,19 @@ class LiteraryFormatCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = "catalog/literary_format_form.html"
 
 
+class LiteraryFormatUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = LiteraryFormat
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:literary-format-list")
+    template_name = "catalog/literary_format_form.html"
+
+
+class LiteraryFormatDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = LiteraryFormat
+    template_name = "catalog/literary_format_confirm_delete.html"
+    success_url = reverse_lazy("catalog:literary-format-list")
+
+
 class BookListView(LoginRequiredMixin, generic.ListView):
     model = Book
     queryset = Book.objects.select_related("format")
