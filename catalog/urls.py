@@ -5,6 +5,7 @@ from catalog.views import (
     LiteraryFormatListView,
     BookListView,
     AuthorListView,
+    AuthorCreateView,
     # book_detail_view,
     AuthorDetailView,
     BookDetailView,
@@ -24,6 +25,7 @@ urlpatterns = [
     path("books/<int:pk>/", BookDetailView.as_view(), name="book-detail"),
     # path("books/<int:pk>/", book_detail_view, name="book-detail"),
     path("authors/", AuthorListView.as_view(), name="author-list"),
+    path("authors/create/", AuthorCreateView.as_view(), name="author-create"),
     path("authors/<int:pk>/", AuthorDetailView.as_view(), name="author-detail"),
 ]
 

@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from catalog.forms import AuthorCreationForm
 from catalog.models import Book, Author, LiteraryFormat
 
 
@@ -76,6 +77,11 @@ class AuthorListView(LoginRequiredMixin, generic.ListView):
     model = Author
     queryset = Author.objects.prefetch_related("books")
     paginate_by = 4
+
+
+class AuthorCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Author
+    form_class = AuthorCreationForm
 
 
 class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
